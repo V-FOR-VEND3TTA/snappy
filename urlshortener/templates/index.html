@@ -77,9 +77,9 @@ section {
   <h1>URL Shortener</h1>
   <form id="post-form">
     {% csrf_token %}
-  <input type="text" name="link" id="link" placeholder="Enter URL here">
+  <input type="text" name="link" id="link" placeholder="Enter the URL you want to shorten here">
   <div class="buttons">
-    <button type="submit" id="shorten">Shorten</button>
+    <button type="submit" id="link">Shorten</button>
   </div>
   </form>
   
@@ -88,6 +88,7 @@ section {
 </main>
 
 <script type="text/javascript">
+  // This script uses AJAX to prevent page refresg
   $(document).on('submit','#post-form',function(e){
     e.preventDefault();
 
@@ -99,7 +100,7 @@ section {
         csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
       },
       success: function(data){
-        $('h2').html("www.surls.ga/"+data)
+        // $('h2').html("www.surls.ga/"+data)
       }
     });
   });
